@@ -1,6 +1,6 @@
 ---
 title: Commitment
-date: 2024-12-28 01:47:00
+date: 2024-12-28 00:47:00
 categories: [Personal Life]
 tags: [random]
 ---

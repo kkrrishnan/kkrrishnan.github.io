@@ -1,0 +1,153 @@
+<html>
+    <head><title>Krishnan Sharma</title>
+        <link rel="icon" type="image/x-icon" href="C:\Users\Lenovo\Desktop\Portf\Portfolio\logo.jpg"></head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+        
+        function signInWithGoogle() {
+            console.log("Sign-in button clicked!"); // Add this for debugging
+            const provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithPopup(provider)
+              .then((result) => {
+                console.log("User signed in:", result.user);
+              })
+              .catch((error) => {
+                console.error("Error signing in:", error);
+              });
+          }
+          </script>
+    <body class="bg-gray-100">
+        <header>
+        <nav class="bg-gray-900 text-white shadow-lg  w-full z-50">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <img src="logo.jpg" alt="Logo" style="border-radius: 9px; "  class="h-10 w-10"> 
+                    <a href="#" class="text-2xl font-bold">Krishnan Sharma</a>
+                </div>
+                <div class="hidden md:flex space-x-4 ml-auto">
+                    <a href="#" class="hover:text-gray-400">Home</a>
+                    <span class="text-gray-500">|</span>
+                    <a href="#" class="hover:text-gray-400">About</a>
+                    <span class="text-gray-500">|</span>
+                    <a href="#" class="hover:text-gray-400">Services</a>
+                    <span class="text-gray-500">|</span>
+                    <a href="#" class="hover:text-gray-400">Contact</a>
+                </div>
+                <button onclick="signInWithGoogle()" class="hidden md:block bg-blue-500 px-4 py-2 rounded-lg ml-6">Sign Up</button>
+        
+            </div>
+
+            <script type="module">
+                // Import Firebase SDKs
+                import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+                import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+                import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
+              
+                // Firebase configuration
+                const firebaseConfig = {
+                    apiKey: "AIzaSyDWJK0KcUbNTmFzUYXPIGIChzxU_gPZvp4",
+  authDomain: "kkrrishnan-0001.firebaseapp.com",
+  projectId: "kkrrishnan-0001",
+  storageBucket: "kkrrishnan-0001.firebasestorage.app",
+  messagingSenderId: "209202676368",
+  appId: "1:209202676368:web:d46dd59a91a75f2bbe0e15",
+  measurementId: "G-28XF767828"
+                };
+              
+                // Initialize Firebase
+                const app = initializeApp(firebaseConfig);
+                const auth = getAuth(app);
+                const provider = new GoogleAuthProvider();
+                const analytics = getAnalytics(app);
+              
+                // Function for Google Sign-In
+                async function signInWithGoogle() {
+                  try {
+                    const result = await signInWithPopup(auth, provider);
+                    console.log("User signed in:", result.user);
+                  } catch (error) {
+                    console.error("Sign-in error", error);
+                  }
+                }
+              
+                // Make the function globally accessible
+                window.signInWithGoogle = signInWithGoogle;
+              
+                // Monitor authentication state
+                onAuthStateChanged(auth, (user) => {
+                  if (user) {
+                    console.log("User is logged in:", user.email);
+                  } else {
+                    console.log("User is logged out.");
+                  }
+                });
+              
+              </script>
+              
+              
+            </div>
+        </nav>
+
+  
+
+
+
+
+
+    <!-- Hero Section -->
+    <section class="flex flex-col items-center text-center mt-10">
+        <div style=" background-color: #191919;" class=" text-white text-2xl font-bold py-2 px-6 ml-40 rounded-lg">
+            Welcome to Krishnan Sharma!
+        </div>
+        <div class="flex flex-col md:flex-row items-center mt-6 max-w-4xl mx-auto px-4">
+            <!-- Image -->
+            <div class="md:w-60 md:h-55 rounded-full overflow-hidden border-4 border-gray-300">
+                <img src="krr.jpg" alt="Kaushik Shresth" style=" height: 100%; width: 100%; border-radius: 100px; object-fit: cover;">
+            </div>
+
+            <!-- Text Content -->
+            <div class="md:ml-8 mt-6 md:mt-0 text-left">
+               <p class="text-lg font-semibold">
+                    I’m Krishnan Sharma  , a creator who blends logic with art. <br>  Coding   is my playground,   web and graphic design   my canvas, <br>and   writing   my voice. As an   author, blogger, and book lover  ,<br> I craft words that inspire. Beyond screens, I master   calisthenics  , <br>shaping strength and discipline.   Music fuels me, studies sharpen me, <br>and creativity defines me.   I don’t just build websites—I build <br>experiences.Passion drives me, and every skill I own is a brushstroke in<br> my masterpiece.Step into my world, where imagination meets <br>ambition, and let’s create something extraordinary together.  </p>
+    
+                <!-- Buttons -->
+                <div class="mt-4 flex space-x-4">
+                    <a href="#" style=" background-color: #191919;"  class=" text-white px-4 py-2 rounded-lg uppercase text-sm font-bold">YouTube</a>
+                    <a href="https://www.instagram.com/kkrrishnan" target="_blank" style=" background-color: #191919;" class=" text-white px-4 py-2 rounded-lg uppercase text-sm font-bold">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<div class="yogya-footer" style="display: flex !important;align-items:center;justify-content:center;clear:both;width: 100%;flex-direction: column; row-gap:30px; background: #F7F7F7; color: #232228; padding: 80px 10px;">
+<div style="display: flex !important;align-items:center;justify-content:center;column-gap: 12px;">
+<a href="https://www.youtube.com/channel/UC7A5u12yVIZaCO_uXnNhc5g" target="_blank" ><img src="C:\Users\Lenovo\Desktop\Portf\Portfolio\fb.png" style="text-decoration: none !important;color:#000 !important;font-size: inherit !important;height:30px;width:24px;border: 1px solid #e5e5e500;display: flex;align-items:center;justify-content:center;"></a>
+
+<a href="t.me/kkrrishnan_" target="_blank" ><img src="C:\Users\Lenovo\Desktop\Portf\Portfolio\tg.png" style="text-decoration: none !important;color:#000 !important;font-size: inherit !important;height:20px;width:20px;border: 1px solid #e5e5e500;display: flex;align-items:center;justify-content:center;"></a>
+
+<a href="https://www.youtube.com/channel/UC7A5u12yVIZaCO_uXnNhc5g" target="_blank" ><img src="C:\Users\Lenovo\Desktop\Portf\Portfolio\sp.png" style="text-decoration: none !important;color:#000 !important;font-size: inherit !important;height:20px;width:20px;border: 1px solid #e5e5e500;display: flex;align-items:center;justify-content:center;"></a>
+
+<a href="https://www.instagram.com/kkrrishnan" target="_blank" ><img src="C:\Users\Lenovo\Desktop\Portf\Portfolio\ins.png" style="text-decoration: none !important;color:#000 !important;font-size: inherit !important;height:20px;width:20px;border: 1px solid #e5e5e500;display: flex;align-items:center;justify-content:center;"></a>
+
+<a href="https://www.youtube.com" target="_blank" ><img src="C:\Users\Lenovo\Desktop\Portf\Portfolio\youtube.png" style="text-decoration: none !important;color:#000 !important;font-size: inherit !important;height:21px;width:21px;border: 1px solid #e5e5e500;display: flex;align-items:center;justify-content:center;"></a>
+
+<a href="https://github.com/kkrrishnan" target="_blank" ><img src="C:\Users\Lenovo\Desktop\Portf\Portfolio\gt.png" style="text-decoration: none !important;color:#000 !important;font-size: inherit !important;height:21px;width:21px;border: 1px solid #e5e5e500;display: flex;align-items:center;justify-content:center;"></a>
+
+</div>
+<div style="display: flex !important;align-items:center;justify-content:center;font-size: 14px;font-weight: 500;line-height: 20px;letter-spacing: 0.015em;column-gap: 12px;flex-wrap: wrap;">
+<span>Krishnan Sharma <i class="fa-regular fa-copyright"></i>© 2025</span> <i class="fa-solid fa-circle" style="font-size: 4px;"></i> 
+<a href="/privacypolicy" style="color: #232228 !important; padding: 0 !important;font-size: inherit !important;text-decoration: underline !important">Privacy policy</a>  <i class="fa-solid fa-circle" style="font-size: 4px;"></i> 
+<a href="/termsofuse" style="color: #232228 !important;padding: 0 !important;font-size: inherit !important;text-decoration: underline !important">Terms of use</a> <i class="fa-solid fa-circle" style="font-size: 4px;"></i> 
+<a href="/contactus" style="color: #232228 !important;padding: 0 !important;font-size: inherit !important;text-decoration: underline !important">Contact us</a> <i class="fa-solid fa-circle" style="font-size: 4px;"></i> 
+<a href="/refundpolicy" style="color: #232228 !important;padding: 0 !important;font-size: inherit !important;text-decoration: underline !important">Refund policy</a>
+</div>
+</div>
+
+    <!-- Sign In Button -->
+
+
+
+</body>
+</html>

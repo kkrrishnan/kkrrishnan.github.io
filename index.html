@@ -5,6 +5,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdn.tailwindcss.com"></script>
         <style>
+ #visitCounter {
+      position: fixed;
+      bottom: 5px;
+      right: 5px;
+      background-color: #eee;
+      color: #888;
+      font-size: 12px;
+      padding: 4px 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      opacity: 0.2;
+      z-index: 999;
+      font-family: monospace;
+    }
+            
          #scrollBtn {
             position: fixed;
             bottom: 20px;
@@ -324,8 +339,14 @@
 <a href="ct" style="color: #232228 !important;padding: 0 !important;font-size: inherit !important;text-decoration: underline !important">Contact us</a> <i class="fa-solid fa-circle" style="font-size: 4px;"></i> 
 <a href="#" style="color: #232228 !important;padding: 0 !important;font-size: inherit !important;text-decoration: underline !important">Refund policy</a>
 </div>
-</div>
- <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=e27c456d1b284df12abfbbf98e0545f9d9f2341f'></script>
-<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1349026/t/5"></script>
+</div><div id="visitCounter">0</div>
+
+<script>
+  // Use localStorage to count visits
+  let visits = localStorage.getItem("visit-count");
+  visits = visits ? parseInt(visits) + 1 : 1;
+  localStorage.setItem("visit-count", visits);
+  document.getElementById("visitCounter").innerText = "Visits: " + visits;
+</script>
 </body>
 </html>

